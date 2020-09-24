@@ -11,7 +11,7 @@ export class ListaDestinosComponent implements OnInit {
   //VARIABLES
   @Output() onItemAdded: EventEmitter<DestinoViaje>;
   //CONTRUCTOR
-  constructor(private destinosApiClient:DestinosApiClient) {
+  constructor(public destinosApiClient:DestinosApiClient) {
     this.onItemAdded = new EventEmitter();
   }
   //METODOS
