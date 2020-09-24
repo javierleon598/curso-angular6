@@ -1,6 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DestinoViaje } from '../models/destino-viaje.model';
 
 @Component({
@@ -16,7 +16,7 @@ export class FormDestinoViajeComponent implements OnInit {
   constructor(fb: FormBuilder) {
     this.onItemAdded = new EventEmitter();
     this.fg = fb.group({
-      nombre: [''],
+      nombre: ['', Validators.required],
       url: ['']
     });
 
