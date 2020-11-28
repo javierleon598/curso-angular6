@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'angular-wishlist-simple';
   time = new Observable(observer => {
     setInterval(() => observer.next(new Date().toString()), 1000);
+	return null;
   });
   destinoAgregado(d) {
   	//alert(d.nombre);

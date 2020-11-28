@@ -19,10 +19,10 @@
 
     <div class="row  row-flex">
         <app-destino-viaje 
-            *ngFor="let d of destinosApiClient.getAll(); let i=index" 
+            *ngFor="let d of getAll(); let i=index" 
             [destino]="d"
             [idx]="i+1"
-            (clicked)="elegido($event)"
+            (onClicked)="elegido(d)"
             ></app-destino-viaje>
     </div>
 
