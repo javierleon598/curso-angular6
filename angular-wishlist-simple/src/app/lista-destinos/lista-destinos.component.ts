@@ -22,10 +22,6 @@ export class ListaDestinosComponent implements OnInit {
   ) {
     this.onItemAdded = new EventEmitter();
     this.updates = [];
-  }
-
-  //METODOS
-  ngOnInit(): void {
     this.store.select((state) => state.destinos.favorito)
       .subscribe((data) => {
         const  f = data;
@@ -33,7 +29,11 @@ export class ListaDestinosComponent implements OnInit {
           this.updates.push('Se eligió: ' + f.nombre);
         }
       });
-    this.all = this.store.select((state) => state.destinos.items).subscribe((items) => (this.all = items));
+    this.store.select((state) => state.destinos.items).subscribe((items) => (this.all = items));
+  }
+
+  //METODOS
+  ngOnInit(): void {
   }
 
   agregado(d: DestinoViaje) {
@@ -46,7 +46,4 @@ export class ListaDestinosComponent implements OnInit {
     this.destinosApiClient.elegir(d);
   }
 
-  getAll(){
-
-  }
 }

@@ -23,12 +23,10 @@ const routes: Routes = [
 export interface AppState {
   destinos: DestinosViajesState;
 };
-
 const reducers: ActionReducerMap<AppState> = {
   destinos: reducerDestinosViajes
 };
-
-const reducersInitialState = {
+let reducersInitialState = {
     destinos: intializeDestinosViajesState()
 };
 //fin redux init
@@ -45,7 +43,13 @@ const reducersInitialState = {
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
-    NgRxStoreModule.forRoot(reducers, { initialState: reducersInitialState }),
+    NgRxStoreModule.forRoot(reducers, { 
+      initialState: reducersInitialState,
+      runtimeChecks : {
+        strictActionImmutability :false,
+        strictStateImmutability :false
+      }
+    }),
     EffectsModule.forRoot([DestinosViajesEffects]),
     StoreDevtoolsModule.instrument()
   ],
