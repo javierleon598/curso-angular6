@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { DestinoViajeComponent } from './destino-viaje/destino-viaje.component';
-import { ListaDestinosComponent } from './lista-destinos/lista-destinos.component';
-import { DestinoDetalleComponent } from './destino-detalle/destino-detalle.component';
+import { DestinoViajeComponent } from './components/destino-viaje/destino-viaje.component';
+import { ListaDestinosComponent } from './components/lista-destinos/lista-destinos.component';
+import { DestinoDetalleComponent } from './components/destino-detalle/destino-detalle.component';
 import { DestinosApiClient } from './models/destinos-api-client.model';
-import { FormDestinoViajeComponent } from './form-destino-viaje/form-destino-viaje.component';
+import { FormDestinoViajeComponent } from './components/form-destino-viaje/form-destino-viaje.component';
 import { DestinosViajesEffects, DestinosViajesState, intializeDestinosViajesState, reducerDestinosViajes } from './models/destinos-viajes-state.model';
 import { StoreModule as NgRxStoreModule, ActionReducerMap } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
