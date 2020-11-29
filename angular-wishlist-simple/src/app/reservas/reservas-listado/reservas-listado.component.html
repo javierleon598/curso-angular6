@@ -1,4 +1,8 @@
 <div class="container content">
     <a [routerLink]="['./', 10]">Ir a detalle</a>
     <a [routerLink]="['/login']">Ir a login</a>
+    <div *ngFor="let r of api.getAll()">
+        <p>{{r.id}} - {{r.name}}</p>
+    </div>
+
 </div>
