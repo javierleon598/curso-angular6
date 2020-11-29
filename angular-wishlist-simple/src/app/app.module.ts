@@ -17,15 +17,25 @@ import { LoginComponent } from './components/login/login/login.component';
 import { ProtectedComponent } from './components/protected/protected/protected.component';
 import { AuthService } from './services/auth.service';
 import { UsuarioLogueadoGuard } from './guards/usuario-logueado/usuario-logeado.guard';
+import { VuelosComponentComponent } from './components/vuelos/vuelos-component/vuelos-component.component';
+import { VuelosMainComponentComponent } from './components/vuelos/vuelos-main-component/vuelos-main-component.component';
+import { VuelosDetalleComponentComponent } from './components/vuelos/vuelos-detalle-component/vuelos-detalle-component.component';
+import { VuelosMasInfoComponentComponent } from './components/vuelos/vuelos-mas-info-component/vuelos-mas-info-component.component';
+
+export const childrenRoutesVuelos: Routes = [
+  { path: '', redirectTo: 'main', pathMatch: 'full' },
+  { path: 'main', component: VuelosMainComponentComponent },
+  { path: 'mas-info', component: VuelosMasInfoComponentComponent },
+  { path: ':id', component: VuelosDetalleComponentComponent },
+];
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: ListaDestinosComponent },
   { path: 'destino/:id', component: DestinoDetalleComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'protected', component: ProtectedComponent, canActivate: [ UsuarioLogueadoGuard ]
-  }
-  
+  { path: 'protected', component: ProtectedComponent, canActivate: [ UsuarioLogueadoGuard ] },
+  { path: 'vuelos', component: VuelosComponentComponent, canActivate: [ UsuarioLogueadoGuard ], children: childrenRoutesVuelos }
 ];
 //redux init
 export interface AppState {
@@ -46,7 +56,11 @@ let reducersInitialState = {
     DestinoDetalleComponent,
     FormDestinoViajeComponent,
     LoginComponent,
-    ProtectedComponent
+    ProtectedComponent,
+    VuelosComponentComponent,
+    VuelosMainComponentComponent,
+    VuelosDetalleComponentComponent,
+    VuelosMasInfoComponentComponent
   ],
   imports: [
     BrowserModule,
