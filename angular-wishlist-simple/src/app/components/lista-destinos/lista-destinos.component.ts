@@ -8,6 +8,7 @@ import { DestinosApiClient } from '../../models/destinos-api-client.model';
   selector: 'app-lista-destinos',
   templateUrl: './lista-destinos.component.html',
   styleUrls: ['./lista-destinos.component.css'],
+  providers: [ DestinosApiClient ]
 })
 export class ListaDestinosComponent implements OnInit {
   //VARIABLES

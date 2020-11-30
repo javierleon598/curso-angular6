@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { DestinoViajeComponent } from './components/destino-viaje/destino-viaje.component';
 import { ListaDestinosComponent } from './components/lista-destinos/lista-destinos.component';
 import { DestinoDetalleComponent } from './components/destino-detalle/destino-detalle.component';
-import { DestinosApiClient } from './models/destinos-api-client.model';
+// import { DestinosApiClient } from './models/destinos-api-client.model';
 import { FormDestinoViajeComponent } from './components/form-destino-viaje/form-destino-viaje.component';
 import { DestinosViajesEffects, DestinosViajesState, intializeDestinosViajesState, reducerDestinosViajes } from './models/destinos-viajes-state.model';
 import { StoreModule as NgRxStoreModule, ActionReducerMap } from '@ngrx/store';
@@ -80,7 +80,7 @@ let reducersInitialState = {
     ReservasModule
   ],
   providers: [
-    DestinosApiClient,
+    // DestinosApiClient,
     AuthService,
     UsuarioLogueadoGuard
 
