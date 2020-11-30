@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -22,6 +22,19 @@ import { VuelosMainComponentComponent } from './components/vuelos/vuelos-main-co
 import { VuelosDetalleComponentComponent } from './components/vuelos/vuelos-detalle-component/vuelos-detalle-component.component';
 import { VuelosMasInfoComponentComponent } from './components/vuelos/vuelos-mas-info-component/vuelos-mas-info-component.component';
 import { ReservasModule } from './reservas/reservas.module';
+
+// app config
+export interface AppConfig {
+  apiEndpoint: String;
+}
+
+const APP_CONFIG_VALUE: AppConfig = {
+  apiEndpoint: 'http://localhost:3000'
+};
+
+export const APP_CONFIG = new InjectionToken<AppConfig>('app.config');
+// fin app config
+
 
 export const childrenRoutesVuelos: Routes = [
   { path: '', redirectTo: 'main', pathMatch: 'full' },
@@ -82,7 +95,8 @@ let reducersInitialState = {
   providers: [
     // DestinosApiClient,
     AuthService,
-    UsuarioLogueadoGuard
+    UsuarioLogueadoGuard,
+    { provide: APP_CONFIG, useValue: APP_CONFIG_VALUE },
 
   ],
   bootstrap: [AppComponent]
