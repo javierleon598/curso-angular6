@@ -3,6 +3,7 @@ import { APP_INITIALIZER, Injectable, InjectionToken, NgModule } from '@angular/
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule, HttpHeaders, HttpRequest } from  '@angular/common/http'
+import Dexie from 'dexie';
 
 import { AppComponent } from './app.component';
 import { DestinoViajeComponent } from './components/destino-viaje/destino-viaje.component';
@@ -23,6 +24,7 @@ import { VuelosMainComponentComponent } from './components/vuelos/vuelos-main-co
 import { VuelosDetalleComponentComponent } from './components/vuelos/vuelos-detalle-component/vuelos-detalle-component.component';
 import { VuelosMasInfoComponentComponent } from './components/vuelos/vuelos-mas-info-component/vuelos-mas-info-component.component';
 import { ReservasModule } from './reservas/reservas.module';
+import { DestinoViaje } from './models/destino-viaje.model';
 
 // app config
 export interface AppConfig {
@@ -86,6 +88,34 @@ class AppLoadService {
 }
 // fin app init
 
+// dexie db
+// export class Translation {
+//   constructor(public id: number, public lang: string, public key: string, public value: string) {}
+// }
+@Injectable({
+  providedIn: 'root'
+})
+
+export class MyDatabase extends Dexie {
+  
+  destinos: Dexie.Table<DestinoViaje, number>;
+  // translations: Dexie.Table<Translation, number>;
+
+  constructor () {
+      super('MyDatabase');
+      this.version(1).stores({
+        destinos: '++id, nombre, imagenUrl'
+      });
+      // this.version(2).stores({
+      //   destinos: '++id, nombre, imagenUrl',
+      //   translations: '++id, lang, key, value'
+      // });
+  }
+}
+export const db = new MyDatabase();
+// fin dexie db
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -124,6 +154,7 @@ class AppLoadService {
     { provide: APP_CONFIG, useValue: APP_CONFIG_VALUE },
     AppLoadService,
     { provide: APP_INITIALIZER, useFactory: init_app, deps: [AppLoadService], multi: true },
+    MyDatabase,
   ],
   bootstrap: [AppComponent]
 })
