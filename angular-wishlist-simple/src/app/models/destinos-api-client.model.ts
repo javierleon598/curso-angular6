@@ -13,6 +13,17 @@ export class DestinosApiClient {
         constructor(private store: Store<AppState>, 
                 @Inject(forwardRef(() => APP_CONFIG)) private config: AppConfig, 
                 private http: HttpClient) {
+                        this.store
+                        .select((state) => state.destinos)
+                        .subscribe((data) => {
+                                console.log('destinos sub store');
+                                console.log(data);
+                                this.destinos = data.items;
+                        });
+                        this.store.subscribe((data) => {
+                        console.log('all store');
+                        console.log(data);
+                        });
         }
         
 	add(d: DestinoViaje){
