@@ -47,7 +47,8 @@ import { ReservasModule } from './reservas/reservas.module';
 import { DestinoViaje } from './models/destino-viaje.model';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { from, Observable } from 'rxjs';
-import { flatMap } from 'rxjs/operators';
+import { map, flatMap } from 'rxjs/operators';
+import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 
 // app config
 export interface AppConfig {
@@ -229,6 +230,7 @@ function HttpLoaderFactory(http: HttpClient) {
           deps: [HttpClient]
       }
     }),
+    NgxMapboxGLModule,
   ],
   providers: [
     // DestinosApiClient,
