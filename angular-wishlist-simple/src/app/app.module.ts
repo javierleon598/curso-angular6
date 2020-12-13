@@ -50,6 +50,7 @@ import { from, Observable } from 'rxjs';
 import { map, flatMap } from 'rxjs/operators';
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EspiameDirective } from './espiame.directive';
 
 // app config
 export interface AppConfig {
@@ -207,6 +208,7 @@ function HttpLoaderFactory(http: HttpClient) {
     VuelosMainComponentComponent,
     VuelosDetalleComponentComponent,
     VuelosMasInfoComponentComponent,
+    EspiameDirective,
   ],
   imports: [
     BrowserModule,
